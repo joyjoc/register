@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 세미나 참가신청</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>AI 세미나 참가신청</h2>
+        <form id="seminarForm">
+            <input type="text" id="name" placeholder="이름" required>
+            <input type="text" id="company" placeholder="회사명" required>
+            <input type="text" id="position" placeholder="직함" required>
+            <input type="tel" id="phone" placeholder="전화번호" required>
+            <input type="email" id="email" placeholder="이메일" required>
+            <button type="button" onclick="sendEmail()">신청하기</button>
+        </form>
+        <p class="note">선착순 마감되며, 한 기업당 2명까지 등록할 수 있습니다.</p>
+    </div>
+
+    <script>
+        function sendEmail() {
+            // 입력된 값 가져오기
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const position = document.getElementById('position').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            // 이메일 내용 만들기
+            const subject = "AI 세미나 신청";
+            const body = `AI 세미나 참가 신청 정보%0D%0A%0D%0A` +
+                         `- 이름: ${name}%0D%0A` +
+                         `- 회사명: ${company}%0D%0A` +
+                         `- 직함: ${position}%0D%0A` +
+                         `- 전화번호: ${phone}%0D%0A` +
+                         `- 이메일: ${email}`;
+
+            // 아웃룩 열기
+            window.location.href = `mailto:conference@giikorea.co.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>
